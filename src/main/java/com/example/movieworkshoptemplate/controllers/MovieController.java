@@ -12,8 +12,6 @@ public class MovieController {
     //Controller methods
 
 
-
-
     //Task 3.1:
     @GetMapping("/")
     public String index(){
@@ -41,6 +39,5 @@ public class MovieController {
         MovieService movieService = new MovieService();
         return movieService.HowManyWonAnAward();
     }
-
 
 }

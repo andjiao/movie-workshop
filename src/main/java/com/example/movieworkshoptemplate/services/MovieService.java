@@ -63,9 +63,15 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
         for(Movie movie : readFile.fileReader()){
             if(movie.isAwards().equals("Yes")){
                 amountOfMoviesWithAwards++;
-                //return amountOfMoviesWithAwards + movie.getTitle();
             }
         }
         return amountOfMoviesWithAwards;
+    }
+
+    //3.6 (Advanced)
+    // /filter?char=’x’amount=’n’This end points calls a service that prints all movies,
+    // but only if they contain x character n amount of times
+    public ArrayList <Movie> listOfMoviesWithXName(){
+        return listOfMoviesWithXName();
     }
 }
