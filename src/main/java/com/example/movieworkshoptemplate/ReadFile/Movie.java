@@ -1,6 +1,6 @@
 package com.example.movieworkshoptemplate.ReadFile;
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
     //Year;Length;Title;Subject;Popularity;Awards
     //1963;138;8 1/2;Drama;80;Yes
 
@@ -74,6 +74,11 @@ public class Movie {
                 ", subject: '" + subject + '\'' +
                 ", awards: " + awards +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Movie other) {
+        return Integer.compare(this.popularity, other.popularity);
     }
 
     /*
