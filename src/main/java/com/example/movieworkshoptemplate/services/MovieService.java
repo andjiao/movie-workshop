@@ -42,13 +42,13 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
 (Hint: Remember the comparable interface).
      */
 
-    public ArrayList<Movie> getTenSortByPopularity() throws FileNotFoundException{
+    public String getTenSortByPopularity() throws FileNotFoundException{
 
         HashSet<Movie> tenRandomMovies = new HashSet<>();
 
         while(tenRandomMovies.size() < 10) {
-            int currentNumber = Integer.parseInt(String.valueOf(Math.floor(Math.random()*(moviesList.size()-1)+1)));
-            tenRandomMovies.add(moviesList.get(currentNumber));
+            double currentNumber = Math.floor(Math.random()*(moviesList.size()-1)+1);
+            tenRandomMovies.add(moviesList.get((int) currentNumber));
         }
 
         ArrayList<Movie> sortedTenMovies = new ArrayList<>();
@@ -59,7 +59,13 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
 
         Collections.sort(sortedTenMovies);
 
-        return sortedTenMovies;
+        String result = "Movies:<br>";
+        for (Movie movie: sortedTenMovies) {
+            result += movie.getTitle() + ", popularity: " + movie.getPopularity() + "<br>";
+
+        }
+
+        return result;
     }
 
 

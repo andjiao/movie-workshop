@@ -37,13 +37,7 @@ public class MovieController{
     //Task 3.4:
     @GetMapping("/getTenSortByPopularity")
     public String getTenSortByPopularity() throws FileNotFoundException{
-        MovieService ms3_4 = new MovieService();
-        String toPrint = "Movies:<br>";
-        ArrayList<Movie> tenMovies = ms3_4.getTenSortByPopularity();
-        for (Movie movie:tenMovies) {
-            toPrint += movie.getTitle() + ", popularity: " + movie.getPopularity() + "<br>";
-        }
-        return toPrint;
+        return movieService.getTenSortByPopularity();
     }
 
     //Task 3.5:
