@@ -5,6 +5,7 @@ import com.example.movieworkshoptemplate.repositories.ReadFile;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.HashSet;
 
@@ -16,16 +17,17 @@ public class MovieService {
     public MovieService() throws FileNotFoundException {
     }
 
-
     /*GetFirst, finding first movie and display title*/
-    public String getFirstMovie(){
-        return moviesList.get(0).getTitle();
+    public String getFirstMovie() throws FileNotFoundException{
+        ArrayList <Movie> mList = new ArrayList<>();
+
+        return mList.get(1).getTitle();
 
     }
 
     /*This end-point calls a service,  that finds a single random movie from the list and displays the
     title */
-    public String getRandomMovie(){
+    public String getRandomMovie() throws FileNotFoundException{
         //pick random movie
 
         //Movie randomMovie = moviesList.random(0 - moviesList.size)
@@ -41,7 +43,7 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
 (Hint: Remember the comparable interface).
      */
 
-    public void getTenSortByPopularity(){
+    public ArrayList<Movie> getTenSortByPopularity() throws FileNotFoundException{
         //Først findes ti tilfældige film
         HashSet<Movie> tenRandomMovies = new HashSet<>();
 
@@ -50,6 +52,15 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
             tenRandomMovies.add(moviesList.get(currentNumber));
         }
 
+        ArrayList<Movie> sortedTenMovies = new ArrayList<>();
+
+        for(Movie movie : tenRandomMovies){
+            sortedTenMovies.add(movie);
+        }
+
+        Collections.sort(sortedTenMovies);
+
+        return sortedTenMovies;
     }
 
 
@@ -57,7 +68,7 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
     3.5  /howManyWonAnAward This  end-point  prints  how  many  of
     the  movies  of  the  data-set  that  won  an award.
     */
-    public int HowManyWonAnAward(){
+    public int HowManyWonAnAward() throws FileNotFoundException {
         int amountOfMoviesWithAwards = 0;
         for(Movie movie : moviesList){
             if(movie.isAwards().equals("Yes")){
