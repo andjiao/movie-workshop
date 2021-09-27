@@ -1,16 +1,20 @@
 package com.example.movieworkshoptemplate.services;
 
-import com.example.movieworkshoptemplate.ReadFile.Movie;
-import com.example.movieworkshoptemplate.ReadFile.ReadFile;
+import com.example.movieworkshoptemplate.repositories.Movie;
+import com.example.movieworkshoptemplate.repositories.ReadFile;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.HashSet;
 
 public class MovieService {
     //Services called from controllers that returns what the client requests
+    ReadFile reader = new ReadFile();
+    ArrayList<Movie> moviesList = reader.fileReader();
+
+    public MovieService() throws FileNotFoundException {
+    }
 
     /*GetFirst, finding first movie and display title*/
     public String getFirstMovie() throws FileNotFoundException{
@@ -24,8 +28,7 @@ public class MovieService {
     title */
     public String getRandomMovie() throws FileNotFoundException{
         //pick random movie
-        ReadFile reader = new ReadFile();
-        ArrayList<Movie> moviesList = reader.fileReader();
+
         //Movie randomMovie = moviesList.random(0 - moviesList.size)
         Random randomizer = new Random(moviesList.size());
         Movie randomMovie = moviesList.get(randomizer.nextInt());
@@ -41,9 +44,6 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
 
     public void getTenSortByPopularity() throws FileNotFoundException{
         //Først findes ti tilfældige film
-
-        ReadFile reader = new ReadFile();
-        ArrayList<Movie> moviesList = reader.fileReader();
         HashSet<Movie> tenRandomMovies = new HashSet<>();
 
         while(tenRandomMovies.size() < 10) {
@@ -59,9 +59,8 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
     the  movies  of  the  data-set  that  won  an award.
     */
     public int HowManyWonAnAward() throws FileNotFoundException {
-        ReadFile readFile = new ReadFile();
         int amountOfMoviesWithAwards = 0;
-        for(Movie movie : readFile.fileReader()){
+        for(Movie movie : moviesList){
             if(movie.isAwards().equals("Yes")){
                 amountOfMoviesWithAwards++;
             }

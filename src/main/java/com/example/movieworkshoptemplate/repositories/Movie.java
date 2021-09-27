@@ -1,4 +1,4 @@
-package com.example.movieworkshoptemplate.ReadFile;
+package com.example.movieworkshoptemplate.repositories;
 
 public class Movie implements Comparable<Movie> {
     //Year;Length;Title;Subject;Popularity;Awards
