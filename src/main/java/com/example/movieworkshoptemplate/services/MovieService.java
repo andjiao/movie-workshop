@@ -28,7 +28,6 @@ public class MovieService {
     title */
     public String getRandomMovie() throws FileNotFoundException{
         //pick random movie
-
         //Movie randomMovie = moviesList.random(0 - moviesList.size)
         Random randomizer = new Random();
         Movie randomMovie = moviesList.get(randomizer.nextInt(moviesList.size()));
