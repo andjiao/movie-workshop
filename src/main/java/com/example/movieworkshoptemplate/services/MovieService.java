@@ -30,8 +30,8 @@ public class MovieService {
         //pick random movie
 
         //Movie randomMovie = moviesList.random(0 - moviesList.size)
-        Random randomizer = new Random(moviesList.size());
-        Movie randomMovie = moviesList.get(randomizer.nextInt());
+        Random randomizer = new Random();
+        Movie randomMovie = moviesList.get(randomizer.nextInt(moviesList.size()));
         return randomMovie.getTitle();
     }
 
