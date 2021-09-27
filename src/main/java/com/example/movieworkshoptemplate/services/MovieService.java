@@ -20,7 +20,7 @@ public class MovieService {
     /*GetFirst, finding first movie and display title*/
     public String getFirstMovie() throws FileNotFoundException{
         ArrayList <Movie> mList = moviesList;
-        return mList.get(0).getTitle();
+        return  "The first movie on the list is: " + mList.get(0).getTitle();
 
     }
 
