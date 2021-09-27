@@ -37,9 +37,9 @@ public class MovieService {
 
     /*
     3.4 /getTenSortByPopularity - Amanda
-This end-point calls a service that fetches 10 random movies, maps each result to a Movie model class, adds to a
-Movie Arraylist and prints the result to the browser - sorted in ascending order by popularity
-(Hint: Remember the comparable interface).
+        This end-point calls a service that fetches 10 random movies, maps each result to a Movie model class, adds to a
+        Movie Arraylist and prints the result to the browser - sorted in ascending order by popularity
+        (Hint: Remember the comparable interface).
      */
 
     public String getTenSortByPopularity() throws FileNotFoundException{
@@ -61,7 +61,7 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
 
         String result = "Movies:<br>";
         for (Movie movie: sortedTenMovies) {
-            result += movie.getTitle() + ", popularity: " + movie.getPopularity() + "<br>";
+            result += movie.getTitle() + "; popularity: " + movie.getPopularity() + "<br>";
 
         }
 
