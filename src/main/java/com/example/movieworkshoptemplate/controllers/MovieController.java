@@ -27,18 +27,23 @@ public class MovieController{
         return movieService.getFirstMovie();
     }
 
-    //Task 3.4:
-    @GetMapping("/getTenSortByPopularity")
-    public ArrayList<Movie> getTenSortByPopularity() throws FileNotFoundException{
-        MovieService ms3_4 = new MovieService();
-        return ms3_4.getTenSortByPopularity();
-    }
-
     //Task 3.3:
     @GetMapping("/getRandomMovie")
     public String getRandomMovie() throws FileNotFoundException{
         MovieService ms3_3 = new MovieService();
         return ms3_3.getRandomMovie();
+    }
+
+    //Task 3.4:
+    @GetMapping("/getTenSortByPopularity")
+    public String getTenSortByPopularity() throws FileNotFoundException{
+        MovieService ms3_4 = new MovieService();
+        String toPrint = "Movies:<br>";
+        ArrayList<Movie> tenMovies = ms3_4.getTenSortByPopularity();
+        for (Movie movie:tenMovies) {
+            toPrint += movie.getTitle() + ", popularity: " + movie.getPopularity() + "<br>";
+        }
+        return toPrint;
     }
 
     //Task 3.5:

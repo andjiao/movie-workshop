@@ -44,7 +44,7 @@ Movie Arraylist and prints the result to the browser - sorted in ascending order
      */
 
     public ArrayList<Movie> getTenSortByPopularity() throws FileNotFoundException{
-        //Først findes ti tilfældige film
+
         HashSet<Movie> tenRandomMovies = new HashSet<>();
 
         while(tenRandomMovies.size() < 10) {
