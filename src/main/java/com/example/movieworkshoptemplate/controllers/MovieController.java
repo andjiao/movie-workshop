@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileNotFoundException;
 
 @RestController
-public class MovieController {
+public class MovieController{
     //Controller methods
-
+    MovieService movieService = new MovieService();
+    public MovieController() throws FileNotFoundException {
+    }
 
     //Task 3.1:
     @GetMapping("/")
@@ -19,10 +21,8 @@ public class MovieController {
 
     //Task 3.2:
     @GetMapping("/getFirstMovie")
-    public String getFirst() throws FileNotFoundException{
-        MovieService ms1= new MovieService();
-        return ms1.getFirstMovie();
-
+    public String getFirst(){
+        return movieService.getFirstMovie();
     }
 
     //Task 3.3:
@@ -34,8 +34,7 @@ public class MovieController {
 
     //Task 3.5:
     @GetMapping("/howManyWonAnAward")
-    public int howManyWonAnAward() throws FileNotFoundException {
-        MovieService movieService = new MovieService();
+    public int howManyWonAnAward(){
         return movieService.HowManyWonAnAward();
     }
 
