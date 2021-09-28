@@ -89,4 +89,38 @@ public class MovieService {
     public ArrayList <Movie> listOfMoviesWithXName(){
         return listOfMoviesWithXName();
     }
+
+    /*
+    3.7 (Advanced) /longest?g1=’x’g2=’y’
+    This end-point calls a service that compares two genres and finds what genre, on average, has the longest movies.
+     */
+
+    public String compareGenreLength(String genre1, String genre2){
+        int countNoMoviesG1 = 0;
+        int countTotalLengthG1 = 0;
+        int countNoMoviesG2 = 0;
+        int countTotalLengthG2 = 0;
+        for (Movie movie: moviesList) {
+
+            if (movie.getSubject().equalsIgnoreCase(genre1)){
+                countNoMoviesG1 ++;
+                countTotalLengthG1 += movie.getLength();
+            } else if (movie.getSubject().equalsIgnoreCase(genre2)){
+                countNoMoviesG2 ++;
+                countTotalLengthG2 += movie.getLength();
+            }
+        }
+        int avLengthG1 = countTotalLengthG1/countNoMoviesG1;
+        int avLengthG2 = countTotalLengthG2/countNoMoviesG2;
+
+        if (avLengthG1 > avLengthG2){
+            return "The genre " + genre1 + " has movies of an average longer length than " + genre2;
+        } else if (avLengthG1 < avLengthG2) {
+            return "The genre " + genre2 + " has movies of an average longer length than " + genre1;
+        } else {
+            return genre1 + " and " + genre2 + " have movies of an equal average length.";
+        }
+    }
+
+
 }
