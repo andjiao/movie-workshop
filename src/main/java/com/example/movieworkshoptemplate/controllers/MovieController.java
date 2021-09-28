@@ -1,11 +1,14 @@
 package com.example.movieworkshoptemplate.controllers;
 
+import com.example.movieworkshoptemplate.repositories.Movie;
+import com.example.movieworkshoptemplate.repositories.ReadFile;
 import com.example.movieworkshoptemplate.services.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 @RestController
 public class MovieController{
@@ -45,7 +48,20 @@ public class MovieController{
         return movieService.HowManyWonAnAward();
     }
 
-    //Task 3.7:
+
+    // Task 3.6- Amanda
+    ///filter?char=’x’amount=’n’
+    // Eksempel: http://localhost:8080/filter?char=a&amount=1
+    @GetMapping("/filter")
+    public String filterMovies(@RequestParam("char") char c, @RequestParam("amount") int n)
+            throws FileNotFoundException{
+        ReadFile reader = new ReadFile();
+        ArrayList<Movie> moviesList = reader.fileReader();
+        return movieService.filterMovies(c,n);
+    }
+
+
+    //Task 3.7: - Amanda
     // Eksempel: http://localhost:8080/longest?g1=Drama&g2=Comedy
     @GetMapping("/longest")
     public String compareGenreLength(@RequestParam("g1") String g1, @RequestParam("g2") String g2)

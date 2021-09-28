@@ -91,7 +91,23 @@ public class MovieService {
     }
 
     /*
-    3.7 (Advanced) /longest?g1=’x’g2=’y’
+    3.6 (Advanced) /filter?char=’x’amount=’n’ - Amanda
+    This end points calls a service that prints all movies, but only if they contain x character n amount of times
+     */
+    public String filterMovies(char c, int n){
+        String result = "Movies with " + n + "instances of " + "'" + c +"' in title:<br>";
+        for (Movie movie: moviesList) {
+            String title = movie.getTitle();
+            long count = title.chars().filter(ch -> ch == c).count();
+            if (count == n){
+                result += title + "<br>";
+            }
+        }
+        return result;
+    }
+
+    /*
+    3.7 (Advanced) /longest?g1=’x’g2=’y’ - Amanda
     This end-point calls a service that compares two genres and finds what genre, on average, has the longest movies.
      */
 
