@@ -55,8 +55,6 @@ public class MovieController{
     @GetMapping("/filter")
     public String filterMovies(@RequestParam("char") char c, @RequestParam("amount") int n)
             throws FileNotFoundException{
-        ReadFile reader = new ReadFile();
-        ArrayList<Movie> moviesList = reader.fileReader();
         return movieService.filterMovies(c,n);
     }
 
