@@ -49,7 +49,7 @@ public class MovieController{
     }
 
     //Task 3.8:
-    @GetMapping("/setConnection")
+    @GetMapping("/writeSQLMovieDB")
     public int writeSQLMovieDB() throws FileNotFoundException, SQLException {
         return movieService.writeSQLMovieDB();
     }
