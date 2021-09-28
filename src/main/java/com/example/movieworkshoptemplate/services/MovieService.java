@@ -116,7 +116,7 @@ public class MovieService {
         if (avLengthG1 > avLengthG2){
             return "The genre " + genre1 + " has movies of an average longer length than " + genre2;
         } else if (avLengthG1 < avLengthG2) {
-            return "The genre " + genre2 + " has movies of an average longer length than " + genre1;
+            return "The genre '" + genre2 + "' has movies of an average longer length than the genre '" + genre1 + "'.";
         } else {
             return genre1 + " and " + genre2 + " have movies of an equal average length.";
         }

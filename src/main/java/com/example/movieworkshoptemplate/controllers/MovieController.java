@@ -48,7 +48,8 @@ public class MovieController{
     //Task 3.7:
     // Eksempel: http://localhost:8080/longest?g1=Drama&g2=Comedy
     @GetMapping("/longest")
-    public String compareGenreLength(@RequestParam("g1") String g1, @RequestParam("g2") String g2) throws FileNotFoundException{
+    public String compareGenreLength(@RequestParam("g1") String g1, @RequestParam("g2") String g2)
+            throws FileNotFoundException{
         return movieService.compareGenreLength(g1, g2);
     }
 
