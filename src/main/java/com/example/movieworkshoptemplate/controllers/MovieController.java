@@ -5,7 +5,9 @@ import com.example.movieworkshoptemplate.services.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @RestController
@@ -46,4 +48,9 @@ public class MovieController{
         return movieService.HowManyWonAnAward();
     }
 
+    //Task 3.8:
+    @GetMapping("/setConnection")
+    public int writeSQLMovieDB() throws FileNotFoundException, SQLException {
+        return movieService.writeSQLMovieDB();
+    }
 }

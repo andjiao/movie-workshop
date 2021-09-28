@@ -4,6 +4,10 @@ import com.example.movieworkshoptemplate.repositories.Movie;
 import com.example.movieworkshoptemplate.repositories.ReadFile;
 
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -87,5 +91,56 @@ public class MovieService {
     // but only if they contain x character n amount of times
     public ArrayList <Movie> listOfMoviesWithXName(){
         return listOfMoviesWithXName();
+    }
+
+    //3.8 Advanced:
+    //Import data into an MySQL database.  Display all comedies that won an award only using SQL queries.
+    public int writeSQLMovieDB() throws FileNotFoundException, SQLException {
+        //Get DB connection
+        final String URL = "jdbc:mysql://localhost:3306/movies";//evt. ?serverTimezone=UTC (el. hvilken tidszone man nu bruger)
+        Connection connection = null;
+        boolean res = false;
+        // load and register JDBC driver for MySQL
+        try {
+            connection = DriverManager.getConnection(URL, "Christian", "baldur03");
+            //connection = DBManager.getConnection();
+            System.out.println("So far so good");
+            System.out.println(connection);
+        } catch (SQLException ioerr) {
+            System.out.println("Vi fik IKKE forbindelse err=" + ioerr);
+        }
+        System.out.println(res);
+
+        //Insert into DB
+        String insertStr = "INSERT INTO movies(Year, length, title, subject, popularity, awards) values (?, ?, ?, ?, ?, ?), ON DUPLICATE KEY UPDATE *";
+        PreparedStatement preparedStatement;
+        int rowcount = 0;
+        for(Movie movie : moviesList){
+            try {
+                //preparedStatement = connection.prepareStatement(createStr);
+                preparedStatement = connection.prepareStatement(insertStr);
+                preparedStatement.setInt(1, movie.getYear());
+                preparedStatement.setInt(2, movie.getLength());
+                preparedStatement.setString(3, movie.getTitle());
+                preparedStatement.setString(4, movie.getSubject());
+                preparedStatement.setInt(5, movie.getPopularity());
+                preparedStatement.setString(6, movie.isAwards());
+                int i = preparedStatement.executeUpdate();
+                rowcount += i;
+            } catch (SQLException err){
+                System.out.println("sql FEJL i writeMovieDB=" + err.getMessage());
+            }
+        }
+        System.out.println("Færdig med at skrive feed");
+        return rowcount;
+    }
+
+    public int countMovies(){
+        int count = 0;
+        //Select statement syntax =
+            //SELECT DISTINCT
+            //COUNT(DISTINCT IF(genre = 'comedy', awards = Yes)
+            //FROM movies;
+        return count;
     }
 }
