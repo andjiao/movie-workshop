@@ -4,10 +4,7 @@ import com.example.movieworkshoptemplate.repositories.Movie;
 import com.example.movieworkshoptemplate.repositories.ReadFile;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.HashSet;
+import java.util.*;
 
 public class MovieService {
     //Services called from controllers that returns what the client requests
@@ -28,23 +25,33 @@ public class MovieService {
     title */
     public String getRandomMovie() throws FileNotFoundException{
         //pick random movie
-
-        //Movie randomMovie = moviesList.random(0 - moviesList.size)
         Random randomizer = new Random();
+
+        /* Vi går ind i arraylisten movieList og henter, et tilfældig indexplads, altså bare det første int,
+        som randomizeren møder, hvilket vil være størrelsen på arrayet, som består af følgende
+        {"year":1936,"length":84,"popularity":50,"title":"Secret Agent","subject":"Mystery"} */
         Movie randomMovie = moviesList.get(randomizer.nextInt(moviesList.size()));
+
+        /*Dog er vi kun interesseret i titlen. randomMovie består af en hel linje fra csv-filen,
+        som vi får i linjen ovenover, men vi ønsker kun titlen, derfor getTitle*/
         return randomMovie.getTitle();
     }
 
     /*
     3.4 /getTenSortByPopularity - Amanda
-        This end-point calls a service that fetches 10 random movies, maps each result to a Movie model class, adds to a
-        Movie Arraylist and prints the result to the browser - sorted in ascending order by popularity
+        This end-point calls a service
+        that fetches 10 random movies
+        maps each result to a Movie model class,
+        adds to a Movie Arraylist and prints the result to the browser -
+        sorted in ascending order by popularity
         (Hint: Remember the comparable interface).
      */
 
     public String getTenSortByPopularity() throws FileNotFoundException{
 
-        HashSet<Movie> tenRandomMovies = new HashSet<>();
+        Set<Movie> tenRandomMovies = new HashSet<>();
+
+        while(tenRandomMovies.)
 
         while(tenRandomMovies.size() < 10) {
             double currentNumber = Math.floor(Math.random()*(moviesList.size()-1)+1);
